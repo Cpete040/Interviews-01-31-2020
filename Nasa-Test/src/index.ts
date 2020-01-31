@@ -20,13 +20,16 @@ app.get( '/daily', async ( request: any, response: any ) => {
     response.send(result);
 } );
 
+//handle get requests to /timeline
 app.get( '/timeline', async ( request: any, response: any ) => {
     const daily = new DailyImage();
+    //Sends dates string from query to fetch image for each date in dates
     const timeline = await daily.getTimeline(request.query.dates);
     const result = {
         timeline: timeline
     };
 
+    //Sends back the result of the image getter as a JSON
     response.send(result);
 } );
 

@@ -47,7 +47,13 @@ export class DailyImage {
         }
     }
 
+    /**
+     * Gets the daily Nasa astronomy picture for every date in the dates string
+     * @param dates string with YYYY-MM-DD dates comma separated
+     * @returns Promise of an array of IDailyImage objects, sorted chronilogically with most recent picture first
+     */
     public async getTimeline(dates: string): Promise<IDailyImage[]>{
+        try {
         var images: IDailyImage[] = [];
         var imagesAr: string[] = dates.replace(/["']/g,'').split(',');
         
@@ -59,6 +65,9 @@ export class DailyImage {
         images.sort((a,b) => (new Date(b.date)) < (new Date(a.date)) ? -1 : (new Date(b.date)) < (new Date(a.date)) ? 1 : 0);
 
         return images;
+    } catch(e) {
+        return undefined;
+    }
     }
     
 
