@@ -1,3 +1,9 @@
+# Note: I have to study for a midterm, so I was unable to complete the bonus before 6pm (also I ended up having to write a lackluster failcase for timeline). 
+
+I understand that you will only be looking at commits before 6pm. However, if you would like me to prove I can complete the bonus, let me know and I would be more than willing.
+
+Thanks for your time today. :)
+
 # Setup
 
 1. Make sure you have the following installed:
