@@ -47,6 +47,21 @@ export class DailyImage {
         }
     }
 
+    public async getTimeline(dates: string): Promise<IDailyImage[]>{
+        var images: IDailyImage[] = [];
+        var imagesAr: string[] = dates.replace(/["']/g,'').split(',');
+        
+        //this waits between each request to make a new one, probably a more optimal way to do this
+        for(var i=0;i<imagesAr.length;i++){
+            images.push(await this.getImageForDate(imagesAr[i]));
+        }
+
+        images.sort((a,b) => (new Date(b.date)) < (new Date(a.date)) ? -1 : (new Date(b.date)) < (new Date(a.date)) ? 1 : 0);
+
+        return images;
+    }
+    
+
     /**
      * Makes the get request to the nasa api
      * @param date string with YYYY-MM-DD format

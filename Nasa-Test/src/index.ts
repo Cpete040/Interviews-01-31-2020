@@ -20,8 +20,20 @@ app.get( '/daily', async ( request: any, response: any ) => {
     response.send(result);
 } );
 
+app.get( '/timeline', async ( request: any, response: any ) => {
+    const daily = new DailyImage();
+    const timeline = await daily.getTimeline(request.query.dates);
+    const result = {
+        timeline: timeline
+    };
+
+    response.send(result);
+} );
+
 // start the Express server
 app.listen( port, () => {
     // tslint:disable-next-line:no-console
     console.log( `server started at http://localhost:${ port }` );
 } );
+
+
